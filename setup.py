@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 '''
 Author : GORAlex Comp
 Date : 01/11/2022
@@ -10,7 +11,7 @@ import configparser
 from dotenv import load_dotenv
 
 config = configparser.ConfigParser()  # make parser object
-config.read("config.ini")  # read config
+config.read("config.cfg")  # read config
 
 # load API_KEY from .env
 # put your API_KEY in ".env" file
@@ -25,7 +26,7 @@ bot = telebot.TeleBot(API_KEY)
 @bot.message_handler(commands=['start','help'])
 def help(message):
     msg = '''
-*Тестовый бот мониторинга для _ServerStatusBot_*
+*Бот мониторинга Dolphin для _TrafficAngels_*
 \-\-\-\-\-\-\-\-\-
 _*1\.*_ Использование дисков → /disk
 _*2\.*_ Использование CPU и RAM → /sysinfo
@@ -103,10 +104,10 @@ _*IP адрес*_ \= {}'''.format(uname,host,ipAddr)
 # server desc (/about)
 @bot.message_handler(commands=['about'])
 def server(message):
-    author = re.escape(str(config['Main']['author']))
-    version = re.escape(str(config['Main']['version']))
-    source = re.escape(str(config['Main']['source']))
-    commands = config['Main']['commands']
+    author = re.escape(str(config['main']['author']))
+    version = re.escape(str(config['main']['version']))
+    source = re.escape(str(config['main']['source']))
+    commands = config['main']['commands']
     msg ='''
 *О боте*
 \-\-\-\-\-\-\-\-\-
